@@ -160,8 +160,8 @@ int main()
 			delete[] str;
 		}
 		str = new char[DIGITS + 1];
-		int start;
-		start = clock();
+		long start;
+		start = time();
 		CBigInt g = G(DIGITS);
 
 		g.SPrint(str);
@@ -170,7 +170,7 @@ int main()
 		FILE* fp = fopen(fn, "w");
 		fprintf(fp, "%s\n", str);
 		fclose(fp);
-		printf("%8d digits :%8dms\n", DIGITS, clock() - start);
+		printf("%8d digits :%8lds\n", DIGITS, time() - start);
 	}
 	return 0;
 }
