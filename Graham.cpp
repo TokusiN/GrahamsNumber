@@ -161,7 +161,7 @@ int main()
 		}
 		str = new char[DIGITS + 1];
 		long start;
-		start = time();
+		start = time(NULL);
 		CBigInt g = G(DIGITS);
 
 		g.SPrint(str);
@@ -170,7 +170,7 @@ int main()
 		FILE* fp = fopen(fn, "w");
 		fprintf(fp, "%s\n", str);
 		fclose(fp);
-		printf("%8d digits :%8lds\n", DIGITS, time() - start);
+		printf("%8d digits :%8lds\n", DIGITS, time(NULL) - start);
 	}
 	return 0;
 }

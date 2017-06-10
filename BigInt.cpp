@@ -4,6 +4,7 @@
 #include <memory.h>
 #include <time.h>
 #include <cmath>
+#include <immintrin.h>
 
 #ifdef _MSC_VER
 #include <intrin.h>
@@ -355,7 +356,7 @@ CBigInt& CBigInt::operator+=(const CBigInt& in)
 	}
 	if (in.m_digitnum >= m_maxdigitnum - 1 || m_digitnum >= m_maxdigitnum - 1)
 	{
-		// Œ…”Šg’£‚ ‚è
+		// æ¡æ•°æ‹¡å¼µã‚ã‚Š
 		int newdigitnum = NextMemSize(std::max(in.m_digitnum + 2, m_maxdigitnum + 2));
 		int* p = MM_MALLOC(int, newdigitnum);
 		int i;
@@ -418,7 +419,7 @@ CBigInt& CBigInt::operator+=(const CBigInt& in)
 	}
 	else
 	{
-		// Œ…”Šg’£–³‚µ
+		// æ¡æ•°æ‹¡å¼µç„¡ã—
 		int i;
 		int mindigitnum = std::min(in.m_digitnum, m_digitnum);
 		int c = 0;
@@ -518,7 +519,7 @@ CBigInt& CBigInt::operator-=(const CBigInt& in)
 	{
 		if (maxdigitnum >= m_maxdigitnum)
 		{
-			// Œ…”Šg’£‚ ‚è
+			// æ¡æ•°æ‹¡å¼µã‚ã‚Š
 			int newdigitnum = NextMemSize(maxdigitnum + 1);
 			int* p = MM_MALLOC(int, newdigitnum);
 			int c = 0;
@@ -624,13 +625,13 @@ CBigInt& CBigInt::operator*=(const CBigInt& in)
 	else if (in.m_digitnum < 4)
 	{
 		m_sign *= in.m_sign;
-		// 3Œ…–¢–‚ÌŠ|‚¯Z
+		// 3æ¡æœªæº€ã®æ›ã‘ç®—
 		if (in.m_digitnum == 1 && in.m_digits[0] == 1)
 		{
 		}
 		else if (m_digitnum + in.m_digitnum > m_maxdigitnum)
 		{
-			// Œ…”Šg’£‚ ‚è
+			// æ¡æ•°æ‹¡å¼µã‚ã‚Š
 			long long n = (unsigned long long)in;
 			if (n < 0)
 			{
@@ -658,7 +659,7 @@ CBigInt& CBigInt::operator*=(const CBigInt& in)
 		}
 		else
 		{
-			// Œ…”Šg’£–³‚µ
+			// æ¡æ•°æ‹¡å¼µç„¡ã—
 			long long n = (unsigned long long)in;
 			if (n < 0)
 			{
@@ -780,7 +781,7 @@ CBigInt& CBigInt::operator/=(const CBigInt& in)
 	else if (in.m_digitnum < 4)
 	{
 		m_sign *= in.m_sign;
-		// 3Œ…–¢–‚ÌŠ„‚èZ
+		// 3æ¡æœªæº€ã®å‰²ã‚Šç®—
 		if (in.m_digitnum == 1 && in.m_digits[0] == 1)
 		{
 		}
@@ -823,7 +824,7 @@ CBigInt& CBigInt::operator/=(const CBigInt& in)
 		int digits = m_digitnum - posin.m_digitnum;
 		if (digits < 0)
 		{
-			// ƒoƒO
+			// ãƒã‚°
 			abort();
 		}
 		int shift = posin.m_digitnum + digits + 2;
@@ -841,7 +842,7 @@ CBigInt& CBigInt::operator/=(const CBigInt& in)
 		}
 		div *= inv;
 		div >>= shift - shift2;
-#if 1 // œZ‚ÉŒë·‚ğ‹–‚·
+#if 1 // é™¤ç®—ã«èª¤å·®ã‚’è¨±ã™
 		CBigInt tmp = posin * div;
 		if (*this < tmp)
 		{
@@ -1184,13 +1185,13 @@ CBigInt::operator double() const
 
 CBigInt& CBigInt::ShiftAdd(const CBigInt& in, int shift)
 {
-	printf("ShiftAdd‚Í–¢À‘•‚Å‚·");
+	printf("ShiftAddã¯æœªå®Ÿè£…ã§ã™");
 	return *this;
 }
 
 CBigInt& CBigInt::ShiftSub(const CBigInt& in, int shift)
 {
-	printf("ShiftSub‚Í–¢À‘•‚Å‚·");
+	printf("ShiftSubã¯æœªå®Ÿè£…ã§ã™");
 	return *this;
 }
 
