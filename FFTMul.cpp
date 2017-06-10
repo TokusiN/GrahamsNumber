@@ -254,7 +254,7 @@ CBigInt FFTCompMul(const CBigInt& ar, const CBigInt& ai, const CBigInt& br, cons
 		ffta[i] = _mm256_mul_pd(ffta[i], mul);
 	}
 	CBigInt ret;
-	// Todo:•„†‚ğ‰½‚Æ‚©‚µ‚æ‚¤
+	// Todo:ç¬¦å·ã‚’ä½•ã¨ã‹ã—ã‚ˆã†
 	ret.m_sign = ar.m_sign * br.m_sign;
 	ret.m_maxdigitnum = fftsize * 4;
 	ret.m_digits = MM_MALLOC(int, fftsize * 4);
